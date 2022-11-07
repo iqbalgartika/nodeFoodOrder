@@ -22,7 +22,7 @@ app.post("/order", orderController.postOrder);
 
 mongoose
   .connect(
-    "mongodb+srv://admin:Admin123@cluster0-elxt9.mongodb.net/foodOrder?retryWrites=true&w=majority"
+    "ConnectionString"
   )
   .then(() => {
     app.listen(9000, () => {
