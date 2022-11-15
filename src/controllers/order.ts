@@ -1,10 +1,15 @@
-const Order = require("../models/order");
-const User = require("../models/user");
+import { Request, Response, NextFunction } from "express";
+import Order from "../models/order";
+import User from "../models/user";
 
-exports.postOrder = async (req, res, next) => {
+export const postOrder = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const user = new User({ ...req.body.userData });
-    await user.save()
+    await user.save();
     const order = new Order({
       userData: user,
       meals: req.body.meals,

@@ -1,6 +1,11 @@
-const Meal = require("../models/meal");
+import { Request, Response, NextFunction } from "express";
+import Meal from "../models/meal";
 
-exports.getMeals = async (req, res, next) => {
+export const getMeals = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const data = await Meal.find();
     const meals = data.map((meal) => {
@@ -20,7 +25,11 @@ exports.getMeals = async (req, res, next) => {
   }
 };
 
-exports.getMeal = async (req, res, next) => {
+export const getMeal = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const id = req.params.id;
     console.log(id);
@@ -34,7 +43,11 @@ exports.getMeal = async (req, res, next) => {
   }
 };
 
-exports.postMeal = async (req, res, next) => {
+export const postMeal = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const meal = new Meal({ ...req.body });
     const save = await meal.save();
